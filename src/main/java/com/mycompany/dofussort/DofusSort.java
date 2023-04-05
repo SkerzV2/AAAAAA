@@ -126,9 +126,9 @@ public class DofusSort {
         Personnage personnageActuel = new Personnage(nomDuJoueur, choixClasse);
         
         int i = 0;
-        while(i != 10)
+        while(i != 11)
         {
-            i = repet(10, 
+            i = repet(11, 
                       "1- Créer un personnage\n"
                     + "2- Changer de personnage actuel\n"
                     + "3- Afficher la liste des sorts d'un personnage\n"
@@ -138,7 +138,8 @@ public class DofusSort {
                     + "7- Créer un sort et l'ajouter à une classe\n"
                     + "8- Créer une classe et lui ajouter 3 sorts que l'utilisateur va devoir créer\n"
                     + "9- Afficher la liste des sorts avec les dégâts en combat\n"
-                    + "10- Quitter\n");
+                    + "10- Afficher les sorts disponibles selon le niveau du personnage\n"
+                    + "11- Quitter\n");
             if(i == 1)
             {
                 /* 1- Créer un personnage (Facile, Moyen si optimisé) /2-3
@@ -192,11 +193,17 @@ public class DofusSort {
             }
             if(i == 9)
             {
-                /* 9- Afficher la liste des sorts avec les dégâts en combat. Les dégâts en combat = dégât + caractéristique lié à l'élément du sort (Difficile) /5
+                /* 9- Afficher la liste des sorts avec les dégâts en combat. Les dégâts en combat = dégât + caractéristique lié à l'élément du sort (Moyen, Difficile si optimisé) /3-5
                 Par exemple, on a un personnage ayant 250 en eau, il va pouvoir taper 280-290 avec son sort eau qui tape de base 30-40.
                 */
             }
             if(i == 10)
+            {
+                /* 10- Afficher les sorts disponibles selon le niveau du personnage (Moyen, Difficile si optimisé) /3-5
+                Par exemple, on a un personnage ayant 250 en eau, il va pouvoir taper 280-290 avec son sort eau qui tape de base 30-40.
+                */
+            }
+            if(i == 11)
             {
                 System.out.println("Bye bye");
             }
