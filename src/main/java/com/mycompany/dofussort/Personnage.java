@@ -82,4 +82,10 @@ public class Personnage {
     public void setTerreStatistique(int terreStatistique) {
         this.terreStatistique = terreStatistique;
     }   
+
+    @Override
+    public String toString() {
+        return "Personnage{" + "nom=" + nom + ", classe=" + classe + ", niveau=" + niveau + ", feuStatistique=" + feuStatistique + ", eauStatistique=" + eauStatistique + ", airStatistique=" + airStatistique + ", terreStatistique=" + terreStatistique + '}';
+    }
+    
 }

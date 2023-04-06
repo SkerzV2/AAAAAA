@@ -38,9 +38,11 @@ public class Sort {
     public void setDegatMax(int degatMax) {
         this.degatMax = degatMax;
     }
-
-    public int getDegatMin() {
-        return degatMin;
+    public void gagneDegatMax(int degatMax) {
+        this.degatMax += degatMax;
+    }
+    public void gagneDegatMin(int degatMin) {
+        this.degatMin += degatMin;
     }
 
     public void setDegatMin(int degatMin) {
@@ -61,6 +63,11 @@ public class Sort {
 
     public void setElement(String element) {
         this.element = element;
+    }
+
+    @Override
+    public String toString() {
+        return "Sort{" + "nom=" + nom + ", degatMax=" + degatMax + ", degatMin=" + degatMin + ", niveau=" + niveau + ", element=" + element + '}';
     }
     
     

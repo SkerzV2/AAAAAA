@@ -45,5 +45,9 @@ public class Classe {
     public ArrayList<Sort> getListeSort() {
         return listeSort;
     }
-    
+@Override
+    public String toString() {
+        return "Personnage{" + "Nom=" + nom + ", Bonus=" + bonus + ", liste des sorts=" + listeSort+'}';
+    }
+        
 }

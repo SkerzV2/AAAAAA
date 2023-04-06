@@ -13,10 +13,14 @@ import java.util.Scanner;
  */
 public class DofusSort {
     static Scanner s = new Scanner(System.in);
-    public static void main(String[] args) {                
+    public static void main(String[] args) {  
+        ArrayList<Classe> classes = new ArrayList<Classe>();
+        ArrayList<Personnage> personnages = new ArrayList<Personnage>();
+        ArrayList<String> personnageActuels = new ArrayList<>();
+        ArrayList<Sort> sorts = new ArrayList<Sort>();
         // Iop
         Classe iop = new Classe("Iop", "Dommages");
-        
+        classes.add(iop);
         // Création de ses sorts
         Sort epee_destructrice = new Sort("Épee Destructrice", 50, 30, 1, "Terre");
         Sort bond = new Sort("Bond", 20, 10, 1, "Air");
@@ -33,8 +37,10 @@ public class DofusSort {
         
 
         // Crâ
+        Personnage caca = new Personnage("sandwich",iop);
+        personnages.add(caca);
         Classe cra = new Classe("Crâ", "Portee");
-        
+        classes.add(cra);   
         // Création de ses sorts
         Sort fleche_explosive = new Sort("Fleche Explosive", 35, 20, 1, "Feu");
         Sort tir_critique = new Sort("Tir Critique", 25, 15, 1, "Air");
@@ -52,7 +58,7 @@ public class DofusSort {
 
         // Eniripsa
         Classe eniripsa = new Classe("Eniripsa", "soins");
-        
+        classes.add(eniripsa);
         // Création de ses sorts
         Sort mot_flambant = new Sort("Mot Soignant", 25, 20, 1, "Feu");
         Sort mot_assommant = new Sort("Mot Revitalisant", 0, 50, 1, "Eau");
@@ -69,7 +75,7 @@ public class DofusSort {
         
         // Feca
         Classe feca = new Classe("Feca", "Armure");
-        
+        classes.add(feca);
         // Création de ses sorts
         Sort glyphe_enflamme = new Sort("Glyphe Enflamme", 25, 20, 1, "Feu");
         Sort bouclier_feca = new Sort("Bouclier Feca", 0, 0, 1, "Terre");
@@ -142,6 +148,27 @@ public class DofusSort {
                     + "11- Quitter\n");
             if(i == 1)
             {
+                int b =0;
+                ArrayList<String> listBonus = new ArrayList<String>();
+                System.out.println("entrer un Nom");
+                    Scanner input1 = new Scanner(System.in);
+                    String nom = input1.next();
+                    for (Classe c : classes) {
+                        b++;
+                        System.out.println(b+" -Nom: " + c.getNom()+" | Bonus: "+c.getBonus());
+                        }
+                    System.out.println("choisissez une classe");
+                    Scanner input2 = new Scanner(System.in);
+                    int choixBonus = Integer.parseInt(input2.next());
+                    Classe choixClass = classes.get(choixBonus - 1);
+                    Personnage personnage = new Personnage(nom,choixClass);
+                    personnages.add(personnage);
+                    
+                   for (Personnage p : personnages) {
+                        System.out.println(" -Nom: " + p.getNom()+" | Classe: "+p.getClasse().getNom());
+
+                        }
+                   System.out.println("votre personnage a bien ete cree!");
                 /* 1- Créer un personnage (Facile, Moyen si optimisé) /2-3
                 Dans cette case, vous allez devoir créer un personnage. Cela consiste donc à demander à l'utilisateur
                 un nom. Il faudra aussi lui montrer la liste des classes disponibles pour qu'il puisse choisir la sienne.
@@ -149,6 +176,21 @@ public class DofusSort {
             }
             if(i == 2)
             {
+                int per =0;
+                for (Personnage p : personnages) {
+                    per++;
+                        System.out.println(per++ +"-" +p.toString());
+                        }
+                System.out.println("Choisissez un personnage:");
+                Scanner input3 = new Scanner(System.in);
+                int choixPersoActu = Integer.parseInt(input3.next());
+                Personnage choixPersoActu1 = personnages.get(choixPersoActu - 1);
+                personnageActuel = new Personnage(choixPersoActu1.getNom(), choixPersoActu1.getClasse());
+                personnageActuels.clear();
+                personnageActuels.add(choixPersoActu1.getNom());
+                System.out.println("le personnage princiaple est maintenant :"+personnageActuels);
+                
+                
                 /* 2- Changer de personnage actuel (Facile, Moyen si optimisé) /2-3
                 Dans cette case, vous allez devoir afficher la liste des personnages à l'utilisateur.
                 Celui-ci va pouvoir en sélectionner un pour qu'il soit le personnage actuel.
@@ -156,6 +198,19 @@ public class DofusSort {
             }
             if(i == 3)
             {
+                int per =0;
+                for (Personnage p : personnages) {
+                    per++;
+                        System.out.println(per+" -Nom: " + p.getNom()+" | Classe: "+p.getClasse().getNom());
+                        }
+                System.out.println("Choisissez un personnage:");
+                Scanner input4 = new Scanner(System.in);
+                int choixPersoActu3 = Integer.parseInt(input4.next());
+                Personnage choixPerso = personnages.get(choixPersoActu3 - 1);
+                System.out.println(choixPerso.getClasse().getListeSort());
+                
+                
+                
                 /* 3- Afficher la liste des sorts du personnage actuel (Facile, Moyen si optimisé) /2-3
                 Dans cette case, vous allez demander à l'utilisateur de quel personnage veut-il voir les sorts.
                 Vous afficherez la liste des personnages disponibles pour l'aider dans son choix.
@@ -163,42 +218,170 @@ public class DofusSort {
             }
             if(i == 4)
             {
+                int niveau = 0;
+                do {
+                    System.out.println("à quel niveau voulez vous mettre votre personnage (nombre compris entre 1 et 200)");
+                Scanner input5 = new Scanner(System.in);
+                niveau = Integer.parseInt(input5.next());
+                
+                }while (niveau<=0 | niveau >= 200);
+                    personnageActuel.setNiveau(niveau);
+                    System.out.println("Nom: "+personnageActuel.getNom()+" | Niveau: "+personnageActuel.getNiveau());
+                }
+                
+                
+                
+                
                 /* 4- Augmenter le niveau du personnage actuel (Facile) /2
                 Dans cette case, il faudra demander à l'utilisateur à quel niveau il veut mettre son personnage (nombre compris entre 1 et 200)
                 */
-            }
+            
             if(i == 5)
             {
+                int choixComp =0;
+                System.out.println("1 -Aire: "+personnageActuel.getAirStatistique()+
+                        "\n 2 -Feu: "+personnageActuel.getFeuStatistique()+
+                        "\n 3 -Eau: "+personnageActuel.getEauStatistique()+
+                        "\n 4 -Terre: "+personnageActuel.getTerreStatistique());
+                Scanner input7 = new Scanner(System.in);
+                choixComp = Integer.parseInt(input7.next());
+
+                if(choixComp == 1){
+                    System.out.println("de combien voulez vous la changer");
+
+                    Scanner input6 = new Scanner(System.in);
+                    int augmenCara = Integer.parseInt(input6.next());
+                    personnageActuel.setAirStatistique(augmenCara);
+                    System.out.println("Aire: "+personnageActuel.getAirStatistique());
+                }
+                if(choixComp == 2){
+                    System.out.println("de combien voulez vous la changer");
+
+                    Scanner input6 = new Scanner(System.in);
+                    int augmenCara = Integer.parseInt(input6.next());
+                    personnageActuel.setFeuStatistique(augmenCara);
+                    System.out.println("Feu: "+personnageActuel.getFeuStatistique());
+
+                }
+                if(choixComp == 3){
+                    System.out.println("de combien voulez vous la changer");
+
+                    Scanner input6 = new Scanner(System.in);
+                    int augmenCara = Integer.parseInt(input6.next());
+                    personnageActuel.setEauStatistique(augmenCara);
+                    System.out.println("Eau: "+personnageActuel.getEauStatistique());
+
+                }
+                if(choixComp == 4){
+                    System.out.println("de combien voulez vous la changer");
+
+                    Scanner input6 = new Scanner(System.in);
+                    int augmenCara = Integer.parseInt(input6.next());
+                    personnageActuel.setTerreStatistique(augmenCara);
+                    System.out.println("Terre: "+personnageActuel.getTerreStatistique());
+
+                }
                 /* 5- Augmenter les caractéristiques d'un personnage actuel (Facile) /2
                 Dans cette case, il faudra demander à l'utilisateur quelle caractéristique il veut changer (eau, terre, feu, air) puis de combien il veut la changer.
                 */ 
+            
             }
             if(i == 6)
             {
+                System.out.println(personnageActuel.toString());
                 /* 6- Afficher la fiche personnage (Moyen) /3
                 Dans cette case, on voudra afficher toute les informations relatives au personnage actuel (Nom, Classe, Caractéristique, Niveau, Liste Sorts).
                 */
             }
             if(i == 7)
             {
+                int b =0;
+                for (Classe c : classes) {
+                        b++;
+                        System.out.println(b+" -Nom: " + c.getNom()+" | Bonus: "+c.getBonus());
+                        }
+                System.out.println("choisissez une classe");
+                Scanner input8 = new Scanner(System.in);
+                int choixClass = Integer.parseInt(input8.next());
+                Classe choixClass1 = classes.get(choixClass - 1);
+                System.out.println("entrer un Nom");
+                Scanner input1 = new Scanner(System.in);
+                String nom = input1.next();
+                System.out.println("rentrer les degat-minimum");
+                Scanner input2 = new Scanner(System.in);
+                int degatMin = Integer.parseInt(input2.next());
+                System.out.println("rentrer les degat-max");
+                Scanner input3 = new Scanner(System.in);
+                int degatMax = Integer.parseInt(input3.next());
+                System.out.println("entrer un Element");
+                Scanner input4 = new Scanner(System.in);
+                String element = input4.next();
+                Sort sort = new Sort(nom, degatMax, degatMin, degatMax, element);
+                choixClass1.addSort(sort);
+                System.out.println(sort);
+                    
+                    
                 /* 7- Créer un sort et l'ajouter à une classe (Facile, Moyen si optimisé) /2-3
                 Dans cette case, on voudra créer un sort et l'ajouter à la liste des sorts d'un personnage.
                 */
             }
             if(i == 8)
             {
+                int b=0;
+                System.out.println("entrer un Nom");
+                    Scanner input1 = new Scanner(System.in);
+                    String nom1 = input1.next();
+                    System.out.println("entrer un bonus");
+                    Scanner input4 = new Scanner(System.in);
+                    String element = input4.next();
+                    Classe classe = new Classe(nom1,element);
+                    
+                while(b<=2){
+                    System.out.println("-------------------------------------");
+                    b++;
+                System.out.println("entrer le Nom du sort");
+                Scanner input2 = new Scanner(System.in);
+                String nom = input1.next();
+                System.out.println("rentrer les degat-minimum");
+                Scanner input3 = new Scanner(System.in);
+                int degatMin = Integer.parseInt(input2.next());
+                System.out.println("rentrer les degat-max");
+                Scanner input9 = new Scanner(System.in);
+                int degatMax = Integer.parseInt(input9.next());
+                System.out.println("entrer un Element");
+                Scanner input10 = new Scanner(System.in);
+                String element1 = input10.next();
+                Sort sort = new Sort(nom, degatMax, degatMin, degatMax, element1);
+                classe.addSort(sort);
+                System.out.println(sort);
+                }
+                
+                    
+                
                 /* 8- Créer une classe et lui ajouter à sa liste de sorts 3 sorts que l'utilisateur va devoir créer (Moyen) /3
                 Créer une classe (nom, bonus) et lui ajouter à sa liste de sorts 3 sorts que l'utilisateur va devoir créer dans le même temps (nom, degatMax, degatMin, niveau, element entre terre, eau, feu, air)
                 */
             }
             if(i == 9)
             {
+                System.out.println(personnageActuel.getClasse().getListeSort());
+                //for(Sort s:sorts){
+                    //if(personnageActuel.getClasse().getBonus()=='feu'){
+                  //  s.gagneDegatMax(personnageActuel.getFeuStatistique());
+               // }
+                //j'ai essayer de faire une boucle for dans la quelle je veux recuperer tous les sort ensuite je dois comparer l'element du sort et le comparer avec les caracteristique du personnage
+                //et utiliser la fonction gagne DegatMax et MIn et le tour est jouer
+                }
+            
+                    
                 /* 9- Afficher la liste des sorts avec les dégâts en combat. Les dégâts en combat = dégât + caractéristique lié à l'élément du sort (Moyen, Difficile si optimisé) /3-5
                 Par exemple, on a un personnage ayant 250 en eau, il va pouvoir taper 280-290 avec son sort eau qui tape de base 30-40.
                 */
             }
             if(i == 10)
             {
+               System.out.println(personnageActuel.getClasse().getListeSort());
+                
                 /* 10- Afficher les sorts disponibles selon le niveau du personnage (Moyen, Difficile si optimisé) /3-5
                 Par exemple, on a un personnage ayant 250 en eau, il va pouvoir taper 280-290 avec son sort eau qui tape de base 30-40.
                 */
@@ -208,8 +391,8 @@ public class DofusSort {
                 System.out.println("Bye bye");
             }
         }
-    }
     
+
     public static int repet(int max, String repet)
     {
         int r = 0;
@@ -228,5 +411,37 @@ public class DofusSort {
         }
         return r;
     }
-   
+  public static ArrayList<String> remplirListeGenre(ArrayList<Classe> p)
+    {
+        ArrayList<String> listBonus = new ArrayList<String>();
+        for(Classe bonus : p)
+        {
+            if(listBonus.contains(bonus.getBonus()) == false)
+            {
+                listBonus.add(bonus.getBonus());
+            }
+            if(listBonus.contains(bonus.getBonus()) == false)
+            {
+                listBonus.add(bonus.getBonus());
+            }
+        }
+        return listBonus;
+    }
+   public static ArrayList<String> remplirListecompetence(ArrayList<Classe> p)
+    {
+        ArrayList<String> listBonus = new ArrayList<String>();
+        for(Classe bonus : p)
+        {
+            if(listBonus.contains(bonus.getBonus()) == false)
+            {
+                listBonus.add(bonus.getBonus());
+            }
+            if(listBonus.contains(bonus.getBonus()) == false)
+            {
+                listBonus.add(bonus.getBonus());
+            }
+        }
+        return listBonus;
+    }
+    
 }
