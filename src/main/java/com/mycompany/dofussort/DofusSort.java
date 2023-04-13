@@ -11,7 +11,7 @@ import java.util.Scanner;
  *
  * @author erwan
  */
-public class DofusSort {
+public class DofusSort {  // 18.5/22 + [0.5 (BONUS) -0.5 (Le premier personnage créé n'est pas dans la liste des personnages.) - 0.5 (pour l'indentation)]
     static Scanner s = new Scanner(System.in);
     public static void main(String[] args) {  
         ArrayList<Classe> classes = new ArrayList<Classe>();
@@ -146,7 +146,7 @@ public class DofusSort {
                     + "9- Afficher la liste des sorts avec les dégâts en combat\n"
                     + "10- Afficher les sorts disponibles selon le niveau du personnage\n"
                     + "11- Quitter\n");
-            if(i == 1)
+            if(i == 1) // 2.5/3 car plante si on met un nombre supérieur au nombre de classe.
             {
                 int b =0;
                 ArrayList<String> listBonus = new ArrayList<String>();
@@ -174,7 +174,7 @@ public class DofusSort {
                 un nom. Il faudra aussi lui montrer la liste des classes disponibles pour qu'il puisse choisir la sienne.
                 */    
             }
-            if(i == 2)
+            if(i == 2)  // 2/3 Problème d'affichage. + personnageActuels.clear() ?? -0.5 pour ça. Tu as essayé de trouver des nouvelles fonctions mais le problème du .clear et que ça efface les infos de l'ancien perso dans ton cas.
             {
                 int per =0;
                 for (Personnage p : personnages) {
@@ -196,7 +196,7 @@ public class DofusSort {
                 Celui-ci va pouvoir en sélectionner un pour qu'il soit le personnage actuel.
                 */
             }
-            if(i == 3)
+            if(i == 3) // 3/3
             {
                 int per =0;
                 for (Personnage p : personnages) {
@@ -216,7 +216,7 @@ public class DofusSort {
                 Vous afficherez la liste des personnages disponibles pour l'aider dans son choix.
                 */
             }
-            if(i == 4)
+            if(i == 4) // 2/2
             {
                 int niveau = 0;
                 do {
@@ -236,7 +236,7 @@ public class DofusSort {
                 Dans cette case, il faudra demander à l'utilisateur à quel niveau il veut mettre son personnage (nombre compris entre 1 et 200)
                 */
             
-            if(i == 5)
+            if(i == 5) // 2/2 Bien !
             {
                 int choixComp =0;
                 System.out.println("1 -Aire: "+personnageActuel.getAirStatistique()+
@@ -286,14 +286,14 @@ public class DofusSort {
                 */ 
             
             }
-            if(i == 6)
+            if(i == 6) // 3/3
             {
                 System.out.println(personnageActuel.toString());
                 /* 6- Afficher la fiche personnage (Moyen) /3
                 Dans cette case, on voudra afficher toute les informations relatives au personnage actuel (Nom, Classe, Caractéristique, Niveau, Liste Sorts).
                 */
             }
-            if(i == 7)
+            if(i == 7) // 2.5/3 /!\ L'utilisateur peut entrer n'importe quel élément et cela peut casser le code au moment d'afficher les dégâts par statistique.
             {
                 int b =0;
                 for (Classe c : classes) {
@@ -325,7 +325,7 @@ public class DofusSort {
                 Dans cette case, on voudra créer un sort et l'ajouter à la liste des sorts d'un personnage.
                 */
             }
-            if(i == 8)
+            if(i == 8) // 2/3 dommage tu ne l'ajoutes pas à la liste des classes disponibles.
             {
                 int b=0;
                 System.out.println("entrer un Nom");
@@ -362,7 +362,7 @@ public class DofusSort {
                 Créer une classe (nom, bonus) et lui ajouter à sa liste de sorts 3 sorts que l'utilisateur va devoir créer dans le même temps (nom, degatMax, degatMin, niveau, element entre terre, eau, feu, air)
                 */
             }
-            if(i == 9)
+            if(i == 9)  // +0.5 y'a de l'idée.
             {
                 System.out.println(personnageActuel.getClasse().getListeSort());
                 //for(Sort s:sorts){
