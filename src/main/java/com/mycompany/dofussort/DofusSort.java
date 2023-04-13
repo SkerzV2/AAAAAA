@@ -11,7 +11,7 @@ import java.util.Scanner;
  *
  * @author erwan
  */
-public class DofusSort {  // 18.5/22 + [0.5 (BONUS) -0.5 (Le premier personnage créé n'est pas dans la liste des personnages.) - 0.5 (pour l'indentation)]
+public class DofusSort {  // 18.5/22 = 19 + [0.5 (BONUS) -0.5 (Le premier personnage créé n'est pas dans la liste des personnages.) - 0.5 (pour l'indentation)]
     static Scanner s = new Scanner(System.in);
     public static void main(String[] args) {  
         ArrayList<Classe> classes = new ArrayList<Classe>();
